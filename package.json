@@ -1,0 +1,13 @@
+{
+  "name": "forma-image-editor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A clean, private, browser-based image editor.",
+  "scripts": {
+    "start": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
