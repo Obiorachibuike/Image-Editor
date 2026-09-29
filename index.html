@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <meta
+      name="description"
+      content="A little edit. A whole new feeling. Forma is a free, private photo editor that works right in your browser."
+    />
+    <title>Forma — Your everyday image studio</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="app/app.js" defer></script>
+  </head>
+  <body>
+    <svg
+      class="icon-definitions"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="i-upload" viewBox="0 0 24 24">
+          <path
+            d="M12 16V3m-5 5 5-5 5 5M4 15v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"
+          />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+          <path
+            d="M12 3v13m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"
+          />
+        </symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24">
+          <path d="m8 10 4 4 4-4" />
+        </symbol>
+        <symbol id="i-sliders" viewBox="0 0 24 24">
+          <path d="M4 7h3m4 0h9M4 17h9m4 0h3M7 4v6m10 4v6" />
+        </symbol>
+        <symbol id="i-sparkles" viewBox="0 0 24 24">
+          <path
+            d="m13 3 2.5 6.5L22 12l-6.5 2.5L13 21l-2.5-6.5L4 12l6.5-2.5L13 3ZM4 2v4M2 4h4"
+          />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+          />
+        </symbol>
+        <symbol id="i-contrast" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8" />
+          <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="i-drop" viewBox="0 0 24 24">
+          <path d="M12 3S5 10 5 14a7 7 0 0 0 14 0c0-4-7-11-7-11Z" />
+          <path d="M8 14a4 4 0 0 0 4 4" />
+        </symbol>
+        <symbol id="i-warmth" viewBox="0 0 24 24">
+          <path d="M9 14.5V5a3 3 0 0 1 6 0v9.5a5 5 0 1 1-6 0ZM12 10v8" />
+        </symbol>
+        <symbol id="i-undo" viewBox="0 0 24 24">
+          <path
+            d="M8 4 3 9l5 5M3 9h10a7 7 0 0 1 0 14"
+            transform="translate(0 -2)"
+          />
+        </symbol>
+        <symbol id="i-redo" viewBox="0 0 24 24">
+          <path
+            d="m16 4 5 5-5 5m5-5H11a7 7 0 0 0 0 14"
+            transform="translate(0 -2)"
+          />
+        </symbol>
+        <symbol id="i-reset" viewBox="0 0 24 24">
+          <path d="M3 10a9 9 0 1 1 1 8M3 4v6h6" />
+        </symbol>
+        <symbol id="i-rotate-left" viewBox="0 0 24 24">
+          <path d="M3 9a9 9 0 1 1 0 6M3 3v6h6" />
+        </symbol>
+        <symbol id="i-rotate-right" viewBox="0 0 24 24">
+          <path d="M21 9a9 9 0 1 0 0 6m0-12v6h-6" />
+        </symbol>
+        <symbol id="i-flip-h" viewBox="0 0 24 24">
+          <path d="M12 3v2m0 3v2m0 4v2m0 3v2M8 5 2 19h6V5Zm8 0 6 14h-6V5Z" />
+        </symbol>
+        <symbol id="i-flip-v" viewBox="0 0 24 24">
+          <path d="M3 12h2m3 0h2m4 0h2m3 0h2M5 8 19 2v6H5Zm0 8 14 6v-6H5Z" />
+        </symbol>
+        <symbol id="i-image" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="3" />
+          <circle cx="8" cy="8" r="1.5" />
+          <path d="m3 17 5-5 4 4 4-6 5 7" />
+        </symbol>
+        <symbol id="i-compare" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M12 2v20M6 9h3m-3 3h3m-3 3h3" />
+        </symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5v14" />
+        </symbol>
+        <symbol id="i-fit" viewBox="0 0 24 24">
+          <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z" />
+          <path d="m8 12 3 3 5-6" />
+        </symbol>
+        <symbol id="i-help" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1 .5-1.5 1-1.5 2m0 3h.01" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="m5 12 4 4L19 6" />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+          <path d="m6 6 12 12M6 18 18 6" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M4 12h16m-6-6 6 6-6 6" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Forma home"
+        ><span class="brand-mark"
+          ><span></span><span></span><span></span><span></span></span
+        ><span>forma<span class="brand-dot">.</span></span
+        ><span class="brand-descriptor">YOUR EVERYDAY IMAGE STUDIO</span></a
+      >
+      <div class="header-right">
+        <span class="privacy"
+          ><svg class="icon"><use href="#i-shield" /></svg> Your photos stay
+          yours</span
+        ><span class="header-divider"></span
+        ><button class="help-button" id="help-button">
+          <svg class="icon"><use href="#i-help" /></svg><span>Quick guide</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <div class="eyebrow">
+            <span></span> SMALL EDITS. BIG POSSIBILITIES.
+          </div>
+          <h1 id="page-title">Make a good photo <em>yours.</em></h1>
+          <p>A fresh perspective is just a few adjustments away.</p>
+        </div>
+        <div class="primary-actions">
+          <button class="button button-secondary" id="upload-button">
+            <svg class="icon"><use href="#i-upload" /></svg> Upload image</button
+          ><button class="button button-primary" id="export-button" disabled>
+            <svg class="icon"><use href="#i-download" /></svg> Export image<svg
+              class="icon small"
+            >
+              <use href="#i-chevron" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <div class="editor" id="editor" aria-busy="true">
+        <aside class="sidebar" aria-label="Image editing tools">
+          <div class="tool-tabs" role="tablist" aria-label="Editing tools">
+            <button
+              role="tab"
+              id="adjust-tab"
+              aria-selected="true"
+              aria-controls="adjust-panel"
+              tabindex="0"
+            >
+              <svg class="icon"><use href="#i-sliders" /></svg> Adjust</button
+            ><button
+              role="tab"
+              id="looks-tab"
+              aria-selected="false"
+              aria-controls="looks-panel"
+              tabindex="-1"
+            >
+              <svg class="icon"><use href="#i-sparkles" /></svg> Looks<span
+                class="tab-badge"
+                >6</span
+              >
+            </button>
+          </div>
+          <div id="adjust-panel" role="tabpanel" aria-labelledby="adjust-tab">
+            <div class="section-heading">
+              <h2>Light & color</h2>
+              <button
+                class="text-button"
+                id="reset-adjustments"
+                title="Reset light and color adjustments"
+              >
+                Reset
+              </button>
+            </div>
+            <fieldset id="adjustments" disabled>
+              <legend class="sr-only">Light and color adjustments</legend>
+              <div class="adjustment">
+                <div class="adjustment-label">
+                  <label for="brightness"
+                    ><svg class="icon"><use href="#i-sun" /></svg>
+                    Brightness</label
+                  ><output for="brightness" id="brightness-value"
+                    >100<span>%</span></output
+                  >
+                </div>
+                <input
+                  id="brightness"
+                  data-setting="brightness"
+                  type="range"
+                  min="0"
+                  max="200"
+                  value="100"
+                />
+                <div class="range-labels">
+                  <span>Darker</span><span>Brighter</span>
+                </div>
+              </div>
+              <div class="adjustment">
+                <div class="adjustment-label">
+                  <label for="contrast"
+                    ><svg class="icon"><use href="#i-contrast" /></svg>
+                    Contrast</label
+                  ><output for="contrast" id="contrast-value"
+                    >100<span>%</span></output
+                  >
+                </div>
+                <input
+                  id="contrast"
+                  data-setting="contrast"
+                  type="range"
+                  min="0"
+                  max="200"
+                  value="100"
+                />
+                <div class="range-labels">
+                  <span>Softer</span><span>Stronger</span>
+                </div>
+              </div>
+              <div class="adjustment">
+                <div class="adjustment-label">
+                  <label for="saturation"
+                    ><svg class="icon"><use href="#i-drop" /></svg>
+                    Saturation</label
+                  ><output for="saturation" id="saturation-value"
+                    >100<span>%</span></output
+                  >
+                </div>
+                <input
+                  id="saturation"
+                  data-setting="saturation"
+                  type="range"
+                  min="0"
+                  max="200"
+                  value="100"
+                />
+                <div class="range-labels">
+                  <span>Muted</span><span>Vibrant</span>
+                </div>
+              </div>
+              <div class="adjustment">
+                <div class="adjustment-label">
+                  <label for="warmth"
+                    ><svg class="icon"><use href="#i-warmth" /></svg>
+                    Warmth</label
+                  ><output for="warmth" id="warmth-value">0</output>
+                </div>
+                <input
+                  id="warmth"
+                  class="warmth-range"
+                  data-setting="warmth"
+                  type="range"
+                  min="-100"
+                  max="100"
+                  value="0"
+                />
+                <div class="range-labels">
+                  <span>Cooler</span><span>Warmer</span>
+                </div>
+              </div>
+              <details class="more-adjustments">
+                <summary>
+                  More adjustments
+                  <svg class="icon small"><use href="#i-chevron" /></svg>
+                </summary>
+                <div class="adjustment">
+                  <div class="adjustment-label">
+                    <label for="grayscale">Grayscale</label
+                    ><output for="grayscale" id="grayscale-value"
+                      >0<span>%</span></output
+                    >
+                  </div>
+                  <input
+                    id="grayscale"
+                    data-setting="grayscale"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                </div>
+                <div class="adjustment">
+                  <div class="adjustment-label">
+                    <label for="inversion">Inversion</label
+                    ><output for="inversion" id="inversion-value"
+                      >0<span>%</span></output
+                    >
+                  </div>
+                  <input
+                    id="inversion"
+                    data-setting="inversion"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                </div>
+              </details>
+            </fieldset>
+          </div>
+          <div
+            id="looks-panel"
+            role="tabpanel"
+            aria-labelledby="looks-tab"
+            hidden
+          >
+            <div class="section-heading"><h2>A new point of view</h2></div>
+            <p class="panel-description">One click. A different feeling.</p>
+            <div class="looks-grid" id="looks-grid"></div>
+            <p class="looks-note">
+              Find a look you love, then fine-tune it in Adjust.
+            </p>
+          </div>
+          <section class="transform-section">
+            <div class="section-heading">
+              <h2>Rotate & flip</h2>
+              <span class="tiny-label" id="rotation-value">0°</span>
+            </div>
+            <fieldset id="transforms" disabled>
+              <legend class="sr-only">Rotate and flip image</legend>
+              <div class="transform-buttons">
+                <button
+                  data-transform="left"
+                  aria-label="Rotate left 90 degrees"
+                  title="Rotate left"
+                >
+                  <svg class="icon"><use href="#i-rotate-left" /></svg></button
+                ><button
+                  data-transform="right"
+                  aria-label="Rotate right 90 degrees"
+                  title="Rotate right"
+                >
+                  <svg class="icon"><use href="#i-rotate-right" /></svg></button
+                ><button
+                  data-transform="horizontal"
+                  aria-label="Flip horizontally"
+                  aria-pressed="false"
+                  title="Flip horizontally"
+                >
+                  <svg class="icon"><use href="#i-flip-h" /></svg></button
+                ><button
+                  data-transform="vertical"
+                  aria-label="Flip vertically"
+                  aria-pressed="false"
+                  title="Flip vertically"
+                >
+                  <svg class="icon"><use href="#i-flip-v" /></svg>
+                </button>
+              </div>
+            </fieldset>
+          </section>
+          <div class="sidebar-bottom">
+            <button id="reset-all" class="reset-button" disabled>
+              <svg class="icon"><use href="#i-reset" /></svg> Reset all changes
+            </button>
+            <div class="tip">
+              <svg class="icon"><use href="#i-sparkles" /></svg>
+              <p>
+                A little goes a long way.<br /><span
+                  >Start small. See what feels right.</span
+                >
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <section class="workspace" aria-label="Image preview">
+          <div class="workspace-header">
+            <div class="file-info">
+              <span class="file-icon"
+                ><svg class="icon"><use href="#i-image" /></svg
+              ></span>
+              <div>
+                <h2 id="filename">alpine-escape.jpg</h2>
+                <span id="file-meta">Loading your creative space…</span>
+              </div>
+              <span class="sample-badge" id="sample-badge">SAMPLE</span>
+            </div>
+            <div class="history-tools">
+              <button
+                id="undo"
+                class="icon-button"
+                disabled
+                aria-label="Undo"
+                title="Undo (Ctrl/⌘ Z)"
+              >
+                <svg class="icon"><use href="#i-undo" /></svg></button
+              ><button
+                id="redo"
+                class="icon-button"
+                disabled
+                aria-label="Redo"
+                title="Redo (Ctrl/⌘ Shift Z)"
+              >
+                <svg class="icon"><use href="#i-redo" /></svg>
+              </button>
+            </div>
+          </div>
+          <div class="canvas-area" id="canvas-area">
+            <div class="image-stage" id="image-stage">
+              <canvas
+                id="preview"
+                role="img"
+                aria-label="Preview of your edited image"
+              ></canvas>
+            </div>
+            <div class="original-badge" id="original-badge" hidden>
+              Original
+            </div>
+            <div class="loading-message" id="loading-message">
+              Preparing your canvas…
+            </div>
+            <div class="drop-overlay" id="drop-overlay" hidden>
+              <span class="drop-icon"
+                ><svg class="icon"><use href="#i-upload" /></svg
+              ></span>
+              <h3>A fresh canvas awaits.</h3>
+              <p>Drop your image to start editing</p>
+            </div>
+          </div>
+          <div class="canvas-toolbar">
+            <div class="canvas-dimensions">
+              <svg class="icon small"><use href="#i-image" /></svg
+              ><span id="dimensions">— × — px</span>
+            </div>
+            <div class="zoom-controls">
+              <button
+                id="zoom-out"
+                class="icon-button"
+                aria-label="Zoom out"
+                disabled
+              >
+                <svg class="icon small"><use href="#i-minus" /></svg></button
+              ><button id="zoom-fit" title="Fit image to canvas" disabled>
+                Fit <span id="zoom-value"></span
+                ><svg class="icon small"><use href="#i-chevron" /></svg></button
+              ><button
+                id="zoom-in"
+                class="icon-button"
+                aria-label="Zoom in"
+                disabled
+              >
+                <svg class="icon small"><use href="#i-plus" /></svg>
+              </button>
+            </div>
+            <button
+              class="compare-button"
+              id="compare"
+              aria-pressed="false"
+              disabled
+            >
+              <svg class="icon"><use href="#i-compare" /></svg
+              ><span>View original</span>
+            </button>
+          </div>
+          <div class="workspace-bottom">
+            <span
+              ><span class="status-dot"></span
+              ><span id="edit-status"
+                >Your next great photo starts here</span
+              ></span
+            ><span class="keyboard-hint"><kbd>Space</kbd> to compare</span>
+          </div>
+        </section>
+      </div>
+
+      <div class="under-editor">
+        <p>
+          <svg class="icon"><use href="#i-shield" /></svg> Made to be simple.
+          Designed to be private. <span>Nothing leaves your browser.</span>
+        </p>
+        <span>JPG, PNG & WebP <span class="bullet">·</span> Up to 25 MB</span>
+      </div>
+      <section class="creative-note">
+        <div class="note-icon">
+          <svg class="icon"><use href="#i-sparkles" /></svg>
+        </div>
+        <div>
+          <h2>Your photo. Your perspective.</h2>
+          <p>
+            No complicated tools. No sign-ups. Just a little room to create.
+          </p>
+        </div>
+        <button id="try-upload">
+          Start with your own photo
+          <svg class="icon"><use href="#i-arrow" /></svg>
+        </button>
+      </section>
+      <footer>
+        <span
+          >forma<span class="brand-dot">.</span>
+          <span class="footer-tagline"
+            >A little edit. A whole new feeling.</span
+          ></span
+        ><span>Built for the beauty in the everyday.</span>
+      </footer>
+    </main>
+
+    <input
+      type="file"
+      id="file-input"
+      accept="image/jpeg,image/png,image/webp"
+      hidden
+    />
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <dialog id="export-dialog" aria-labelledby="export-title">
+      <form method="dialog">
+        <div class="dialog-heading">
+          <span class="dialog-icon"
+            ><svg class="icon"><use href="#i-download" /></svg></span
+          ><button
+            class="icon-button"
+            type="button"
+            id="close-export"
+            aria-label="Close export dialog"
+          >
+            <svg class="icon"><use href="#i-close" /></svg>
+          </button>
+        </div>
+        <div class="eyebrow">READY FOR THE WORLD</div>
+        <h2 id="export-title">Make it a keeper.</h2>
+        <p>Your edit, at its original resolution.</p>
+        <label class="field-label" for="export-name">File name</label
+        ><input
+          id="export-name"
+          class="text-input"
+          maxlength="100"
+          required
+        /><label class="field-label" for="export-format">Format</label
+        ><select id="export-format">
+          <option value="image/png">PNG — lossless, with transparency</option>
+          <option value="image/jpeg">JPG — smaller, ready to share</option>
+          <option value="image/webp">WebP — lightweight & versatile</option>
+        </select>
+        <div id="quality-control" hidden>
+          <label class="field-label" for="export-quality"
+            >Quality <output id="quality-value">92%</output></label
+          ><input
+            type="range"
+            id="export-quality"
+            min="10"
+            max="100"
+            value="92"
+          />
+        </div>
+        <div class="export-summary">
+          <svg class="icon"><use href="#i-check" /></svg
+          ><span id="export-dimensions"></span><span>No watermarks. Ever.</span>
+        </div>
+        <button
+          id="download-button"
+          type="submit"
+          class="button button-primary full-width"
+        >
+          <svg class="icon"><use href="#i-download" /></svg> Download image
+        </button>
+      </form>
+    </dialog>
+    <dialog id="help-dialog" aria-labelledby="help-title">
+      <div class="dialog-heading">
+        <span class="dialog-icon"
+          ><svg class="icon"><use href="#i-sparkles" /></svg></span
+        ><button
+          class="icon-button"
+          id="close-help"
+          aria-label="Close quick guide"
+        >
+          <svg class="icon"><use href="#i-close" /></svg>
+        </button>
+      </div>
+      <div class="eyebrow">A LITTLE GUIDANCE</div>
+      <h2 id="help-title">From good to you.</h2>
+      <p>Your creative space, without the learning curve.</p>
+      <ol class="guide-steps">
+        <li>
+          <span>01</span>
+          <div>
+            <h3>Bring a photo</h3>
+            <p>
+              Upload or drag in a JPG, PNG, or WebP. Or explore with our sample
+              image.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>02</span>
+          <div>
+            <h3>Find your feeling</h3>
+            <p>
+              Adjust the sliders, try a Look, or find a new angle. You can
+              always undo or reset.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>03</span>
+          <div>
+            <h3>Keep your creation</h3>
+            <p>
+              Export your edited photo at full resolution. Your original file
+              stays untouched.
+            </p>
+          </div>
+        </li>
+      </ol>
+      <div class="shortcut-list">
+        <span>Undo <kbd>Ctrl / ⌘ Z</kbd></span
+        ><span>Redo <kbd>Ctrl / ⌘ Shift Z</kbd></span
+        ><span>Hold to compare <kbd>Space</kbd></span>
+      </div>
+      <p class="privacy-note">
+        <svg class="icon"><use href="#i-shield" /></svg> Images are processed on
+        your device, never uploaded.
+      </p>
+    </dialog>
+  </body>
+</html>
